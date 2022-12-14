@@ -85,10 +85,6 @@
             text-transform: capitalize;
         }
 
-        .related-post {
-            width: calc(33% - 0.5rem);
-        }
-
         .related-post img {
             width: 100%;
         }
@@ -103,6 +99,7 @@
             background-color: #FFD653;
             color: inherit;
             transition: all 0.2s ease-out;
+            text-decoration: none;
         }
 
         .cta a:hover {
@@ -124,7 +121,6 @@
         .rotulo-ad {
             font-size: 12px;
             text-align: center;
-
         }
 
         /* módulo veja tambem */
@@ -148,14 +144,9 @@
             border-bottom: 1px solid tomato;
         }
 
-        .veja-tambem-post {
-            width: calc(33% - 0.5em);
-        }
 
-        .veja-tambem-post img {
-            width: 100%;
-            height: 130px;
-        }
+
+
 
         .veja-tambem-post h2 {
             font-size: 16px;
@@ -195,7 +186,7 @@
             z-index: 2;
         }
 
-        .clever-outer-wrapper .rotulo-ad:before{
+        .clever-outer-wrapper .rotulo-ad:before {
             content: "PUBLICIDADE";
             display: block;
             bottom: -20px;
@@ -203,17 +194,55 @@
             position: absolute;
         }
 
+        @media (min-width: 1100px) {
+
+            .veja-tambem-post {
+                width: calc(33% - 0.5em);
+            }
+
+            .veja-tambem-post img {
+                width: 100%;
+                height: 130px;
+            }
+
+            .related-post {
+                width: calc(33% - 0.5rem);
+            }
+
+        }
+
+        @media (max-width: 768px) {
+
+            .veja-tambem .wrapper {
+                flex-flow: column wrap;
+                gap: 20px;
+            }
+
+            .veja-tambem-post {
+                display: flex;
+                flex-flow: row nowrap;
+                gap: 20px;
+            }
+
+            .veja-tambem-post img {
+                height: 100px;
+                width: 100px;
+                object-fit: cover;
+            }
+
+            .veja-tambem-post h2 {
+                font-size: 17px;
+            }
+
+        }
     </style>
     <style>
         /* STRUCTURAL CSS */
+
         body {
             margin: 0 0 0;
         }
 
-        main {
-            max-width: 1100px;
-            margin: 40px auto;
-        }
 
         figure {
             margin: 0;
@@ -231,28 +260,7 @@
             margin: 0 0 20px;
         }
 
-        .post-content {
-            display: grid;
-            grid-template-columns: 750px 306px;
-            justify-content: space-between;
-        }
-
-        .post-content>p,
-        .post-content>blockquote,
-        .post-content>h1,
-        .post-content>h2,
-        .post-content>h3,
-        .post-content>h4,
-        .post-content>h5,
-        .post-content>h6,
-        .post-content>figure.video {
-            max-width: 800px;
-            grid-column: 1;
-            margin-left: 100px;
-        }
-
         .post-content blockquote {
-            padding-left: 50px;
             border-left: 5px solid tomato;
         }
 
@@ -264,8 +272,6 @@
         }
 
         .post-content video {
-            width: 650px;
-            height: 500px;
             background: none;
         }
 
@@ -287,52 +293,7 @@
             height: 200%;
         }
 
-        .post-content figure {
-            grid-column: 1;
-        }
 
-        .post-content figure img {
-            width: 750px;
-        }
-
-        /* ad positioning */
-
-        .post-content .ad.full {
-            justify-self: center;
-            display: flex;
-            grid-column: 1 / 3;
-            margin: 20px 0;
-        }
-
-        .post-content .ad.small {
-            justify-self: center;
-            display: flex;
-            margin: 20px 0 20px 100px;
-        }
-
-        .post-content .ad.right {
-            grid-column: 2;
-            grid-row: span 20;
-            justify-self: end;
-        }
-
-        .post-content .ad.video {
-            grid-column: 1;
-            justify-self: end;
-            display: block;
-        }
-
-        .post-content .ad.right div {
-            position: sticky;
-            top: 65px;
-            transition: all 0.1s ease-in;
-        }
-
-        .scroll-up .post-content .ad.right div {
-            top: 105px;
-        }
-
-        /* end of ad positioning */
 
         /* top menu */
 
@@ -350,13 +311,8 @@
         }
 
         header .primary .container {
-            max-width: 1100px;
             padding: 0;
             margin: 0 auto;
-        }
-
-        .hamburguer-menu {
-            padding-left: 5px;
         }
 
         .hamburguer-menu span {
@@ -365,10 +321,6 @@
             width: 25px;
             height: 25px;
             background-repeat: no-repeat;
-        }
-
-        .logo {
-            height: 40px;
         }
 
         .primary .container .flex {
@@ -384,7 +336,6 @@
             display: flex;
             flex-flow: row nowrap;
             align-items: center;
-            gap: 30px;
             font-size: 16px;
             font-weight: bold;
             text-decoration: none;
@@ -427,7 +378,6 @@
         }
 
         .secondary .container {
-            max-width: 1100px;
             padding: 0;
             margin: 0 auto;
         }
@@ -453,6 +403,217 @@
             box-shadow: inset 0 -3px 0px 0px tomato;
             background-color: #f7f7f7;
             color: rgb(20 50 80 / 100%);
+
+        }
+
+        /* media queries for desktop */
+
+        @media (min-width: 1100px) {
+
+            main {
+                max-width: 1100px;
+                margin: 40px auto;
+            }
+
+            .post-content {
+                display: grid;
+                grid-template-columns: 750px 306px;
+                justify-content: space-between;
+            }
+
+            .post-content>p,
+            .post-content>blockquote,
+            .post-content>h1,
+            .post-content>h2,
+            .post-content>h3,
+            .post-content>h4,
+            .post-content>h5,
+            .post-content>h6,
+            .post-content>figure.video {
+                max-width: 800px;
+                grid-column: 1;
+                margin-left: 100px;
+            }
+
+            .post-content blockquote {
+                padding-left: 50px;
+            }
+
+            .post-content video {
+                width: 650px;
+                height: 500px;
+            }
+
+            .post-content figure {
+                grid-column: 1;
+            }
+
+            .post-content figure img {
+                width: 750px;
+            }
+
+            /* ad positioning */
+
+            .post-content .ad.full {
+                justify-self: center;
+                display: flex;
+                grid-column: 1 / 3;
+                margin: 20px 0;
+            }
+
+            .post-content .ad.small {
+                justify-self: center;
+                display: flex;
+                margin: 20px 0 20px 100px;
+            }
+
+            .post-content .ad.right {
+                grid-column: 2;
+                grid-row: span 20;
+                justify-self: end;
+            }
+
+            .post-content .ad.video {
+                grid-column: 1;
+                justify-self: end;
+                display: block;
+            }
+
+            .post-content .ad.right div {
+                position: sticky;
+                top: 65px;
+                transition: all 0.1s ease-in;
+            }
+
+            .scroll-up .post-content .ad.right div {
+                top: 105px;
+            }
+
+            /* end of ad positioning */
+
+            /* header */
+
+            header .primary .container {
+                max-width: 1100px;
+            }
+
+            .hamburguer-menu {
+                padding-left: 5px;
+            }
+
+
+            .logo {
+                height: 40px;
+            }
+
+            .flow-left, .flow-right {
+                gap: 30px;
+            }
+
+            .secondary .container {
+                max-width: 1100px;
+            }
+
+            .hide-desktop {
+                display: none!important;
+            }
+
+        }
+
+        @media (max-width: 768px) {
+
+            main {
+                margin: 40px 10px 20px;
+            }
+
+            .primary .container .flex {
+                margin: 0 10px;
+            }
+
+            .flow-right {
+                display: none;
+            }
+
+            .flow-left {
+                gap: 15px;
+            }
+
+            .logo {
+                height: 30px;
+            }
+
+            .secondary {
+                overflow: hidden;
+            }
+
+            .secondary .container {
+                overflow-x: scroll;
+            }
+
+            .secondary .container:after {
+                background: -webkit-gradient(linear, left top, right top, color-stop(0, rgba(255, 255, 255, 0)), to(#FFD653));
+                background: linear-gradient(90deg, rgba(255, 255, 255, 0) 0, #FFD653);
+                content: "";
+                height: 100%;
+                opacity: 1;
+                pointer-events: none;
+                position: absolute;
+                right: 0;
+                bottom: 0;
+                width: 40px;
+                z-index: 2;
+            }
+
+            .main-nav ul li {
+                flex-basis: max-content;
+                white-space: nowrap;
+            }
+
+            .post-title {
+                font-size: 24px;
+            }
+
+            .post-description {
+                font-size: 18px;
+            }
+
+            figure img {
+                width: 100%;
+            }
+
+            .post-content .ad {
+                display: flex;
+                align-items: center;
+                justify-content: center;
+            }
+
+            .post-content .ad.video div {
+                width: 300px !important;
+                height: 250px !important;
+            }
+
+            .post-content .ad.full div {
+                width: 300px !important;
+                height: 250px !important;
+            }
+
+            .post-content blockquote {
+                margin-left: 0;
+            }
+
+            .post-content blockquote>p {
+                padding-left: 25px;
+            }
+
+            .post-content video {
+                height: 400px;
+                width: auto;
+            }
+
+            .hide-mobile {
+                display: none !important;
+            }
+
 
         }
     </style>
@@ -481,7 +642,7 @@
         </div>
         <div class="secondary">
             <div class="container">
-                <nav class="main-nav">
+                <nav class="main-nav hide-mobile">
                     <ul>
                         <li>Home</li>
                         <li>Últimas</li>
@@ -495,6 +656,16 @@
                         <li>Horóscopo</li>
                         <li>Fique Sabendo</li>
                         <li>Fica a Dica</li>
+                    </ul>
+                </nav>
+                <nav class="main-nav hide-desktop">
+                    <ul>
+                        
+                        <li>Últimas</li>
+                        <li>Curitiba</li>
+                        <li>Esporte</li>
+                        <li>Variedades</li>
+                        <li>Newsletter</li>
                     </ul>
                 </nav>
             </div>
@@ -526,7 +697,7 @@
             <span class="post-date">13/12/2022 às 11h07</span>
         </div>
         <div class="post-content">
-            <div class="ad right 1">
+            <div class="ad right 1 hide-mobile">
                 <div style="width: 300px;height: 250px;"><span>PUBLICIDADE</span></div>
             </div>
             <figure class="featured-image">
@@ -564,7 +735,7 @@
             <div class="ad full">
                 <div style="width: 1100px ;height: 250px;"><span>PUBLICIDADE</span></div>
             </div>
-            <div class="ad right 2">
+            <div class="ad right 2 hide-mobile">
                 <div style="width: 300px;height: 250px;"><span>PUBLICIDADE</span></div>
             </div>
             <p>Conforme Batisti, a maioria dos policiais faz parte da Rone. Dos 28 investigados, 19 foram transferidos

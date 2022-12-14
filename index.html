@@ -1,0 +1,716 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./clever.css">
+    <title>Banda B Interna</title>
+    <style>
+        /* Stylistic CSS */
+        @import url('https://fonts.googleapis.com/css2?family=Open+Sans&display=swap');
+
+        body {
+            font-size: 20px;
+            line-height: 1.5;
+            font-family: 'Open Sans', sans-serif;
+            background-color: #f7f7f7;
+        }
+
+        header,
+        .veja-tambem {
+            font-family: 'Open Sans', sans-serif;
+        }
+
+        .post-content {
+            font-family: Arial, Helvetica, sans-serif;
+        }
+
+        figcaption {
+            font-size: 14px;
+        }
+
+        .breadcrumb {
+            font-size: 15px;
+            margin-bottom: 10px;
+        }
+
+        .breadcrumb ul {
+            list-style: none;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            gap: 8px;
+        }
+
+        /* post edits */
+
+        .post-title {
+            line-height: 1.15;
+            font-size: 40px;
+            font-weight: bold;
+        }
+
+        .post-description {
+            font-size: 20px;
+            display: block;
+        }
+
+        .post-author {
+            font-size: 14px;
+            display: block;
+        }
+
+        .post-date {
+            font-size: 14px;
+            display: block;
+        }
+
+        .related-content {
+            display: flex;
+            flex-flow: row wrap;
+            justify-content: space-between;
+            margin: 20px 0;
+        }
+
+        .related-content-title {
+            font-size: 22px;
+            letter-spacing: -0.025rem;
+            line-height: 1.25;
+            font-weight: bold;
+            border-bottom: 2px solid rgb(255, 99, 71, 0.5);
+            flex-basis: 100%;
+            margin-bottom: 20px;
+            text-transform: capitalize;
+        }
+
+        .related-post {
+            width: calc(33% - 0.5rem);
+        }
+
+        .related-post img {
+            width: 100%;
+        }
+
+        .related-post h2 {
+            margin: 0 0 1em;
+            line-height: 1.25;
+            font-size: 18px;
+        }
+
+        .cta a {
+            background-color: #FFD653;
+            color: inherit;
+            transition: all 0.2s ease-out;
+        }
+
+        .cta a:hover {
+            background-color: #FFD65388;
+            color: inherit;
+        }
+
+        .post-content .ad>div {
+            border: 5px solid tomato;
+            background-color: #ff634726;
+            display: flex;
+            flex-flow: column wrap;
+            align-items: center;
+            justify-content: center;
+            color: #333;
+            font-size: 24px;
+        }
+
+        .rotulo-ad {
+            font-size: 12px;
+            text-align: center;
+
+        }
+
+        /* módulo veja tambem */
+
+        .veja-tambem {
+            margin: 20px 0 40px;
+        }
+
+        .veja-tambem .wrapper {
+            display: flex;
+            flex-flow: row wrap;
+            justify-content: space-between;
+            padding: 20px 0;
+            border-bottom: 3px solid tomato;
+        }
+
+        .veja-tambem-title {
+            font-size: 22px;
+            font-weight: bold;
+            width: 100%;
+            border-bottom: 1px solid tomato;
+        }
+
+        .veja-tambem-post {
+            width: calc(33% - 0.5em);
+        }
+
+        .veja-tambem-post img {
+            width: 100%;
+            height: 130px;
+        }
+
+        .veja-tambem-post h2 {
+            font-size: 16px;
+            margin: 0;
+            font-weight: normal;
+        }
+
+        /* end of módulo veja também */
+
+        .clever-outer-wrapper {
+            height: 212px;
+            margin: 20px auto 0;
+            position: relative;
+            transition: display 0.25s ease-out;
+        }
+
+        .clever-wrapper:before {
+            content: "";
+            width: 100vw;
+            height: 212px;
+            position: absolute;
+            z-index: 1;
+            top: 0;
+            left: 0;
+            margin: 0 auto;
+            background-color: #e1e1e1;
+            display: block;
+        }
+
+        .clever {
+            height: 0;
+            display: block;
+            background-repeat: no-repeat;
+            background-size: cover;
+            transition: height 0.25s ease-out;
+            position: relative;
+            z-index: 2;
+        }
+
+        .clever-outer-wrapper .rotulo-ad:before{
+            content: "PUBLICIDADE";
+            display: block;
+            bottom: -20px;
+            left: 50%;
+            position: absolute;
+        }
+
+    </style>
+    <style>
+        /* STRUCTURAL CSS */
+        body {
+            margin: 0 0 0;
+        }
+
+        main {
+            max-width: 1100px;
+            margin: 40px auto;
+        }
+
+        figure {
+            margin: 0;
+        }
+
+        .post-title {
+            margin: 0 0 10px;
+        }
+
+        .post-description {
+            margin: 0 0 10px;
+        }
+
+        .post-date {
+            margin: 0 0 20px;
+        }
+
+        .post-content {
+            display: grid;
+            grid-template-columns: 750px 306px;
+            justify-content: space-between;
+        }
+
+        .post-content>p,
+        .post-content>blockquote,
+        .post-content>h1,
+        .post-content>h2,
+        .post-content>h3,
+        .post-content>h4,
+        .post-content>h5,
+        .post-content>h6,
+        .post-content>figure.video {
+            max-width: 800px;
+            grid-column: 1;
+            margin-left: 100px;
+        }
+
+        .post-content blockquote {
+            padding-left: 50px;
+            border-left: 5px solid tomato;
+        }
+
+        .post-content figure.video {
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+            line-height: 0;
+        }
+
+        .post-content video {
+            width: 650px;
+            height: 500px;
+            background: none;
+        }
+
+        .post-content figure.video:before {
+            content: "";
+            background-image: url('https://www.bandab.com.br/wp-content/uploads/2021/10/logo-bandab.png.webp');
+            background-size: 75px auto;
+            transform: rotate(-45deg);
+            position: absolute;
+            background-repeat: space;
+            top: -50%;
+            left: -50%;
+            right: 0px;
+            bottom: 0px;
+            display: block;
+            z-index: -1;
+            opacity: 0.35;
+            width: 200%;
+            height: 200%;
+        }
+
+        .post-content figure {
+            grid-column: 1;
+        }
+
+        .post-content figure img {
+            width: 750px;
+        }
+
+        /* ad positioning */
+
+        .post-content .ad.full {
+            justify-self: center;
+            display: flex;
+            grid-column: 1 / 3;
+            margin: 20px 0;
+        }
+
+        .post-content .ad.small {
+            justify-self: center;
+            display: flex;
+            margin: 20px 0 20px 100px;
+        }
+
+        .post-content .ad.right {
+            grid-column: 2;
+            grid-row: span 20;
+            justify-self: end;
+        }
+
+        .post-content .ad.video {
+            grid-column: 1;
+            justify-self: end;
+            display: block;
+        }
+
+        .post-content .ad.right div {
+            position: sticky;
+            top: 65px;
+            transition: all 0.1s ease-in;
+        }
+
+        .scroll-up .post-content .ad.right div {
+            top: 105px;
+        }
+
+        /* end of ad positioning */
+
+        /* top menu */
+
+        header {
+            position: sticky;
+            top: 0;
+            z-index: 10;
+        }
+
+        header .primary {
+            background-color: #fff;
+            border-bottom: 1px solid #66666655;
+            z-index: 10;
+            position: relative;
+        }
+
+        header .primary .container {
+            max-width: 1100px;
+            padding: 0;
+            margin: 0 auto;
+        }
+
+        .hamburguer-menu {
+            padding-left: 5px;
+        }
+
+        .hamburguer-menu span {
+            display: block;
+            background-image: url(https://s1.trrsf.com/update-1670956244/fe/zaz-mod-t360-icons/svg/essential-solid/bars.svg);
+            width: 25px;
+            height: 25px;
+            background-repeat: no-repeat;
+        }
+
+        .logo {
+            height: 40px;
+        }
+
+        .primary .container .flex {
+            display: flex;
+            flex-flow: row nowrap;
+            justify-content: space-between;
+            align-items: center;
+            height: 55px;
+        }
+
+        .flow-left,
+        .flow-right {
+            display: flex;
+            flex-flow: row nowrap;
+            align-items: center;
+            gap: 30px;
+            font-size: 16px;
+            font-weight: bold;
+            text-decoration: none;
+        }
+
+        .flow-left button {
+            border: 3px solid #CE2127;
+            text-transform: uppercase;
+            color: #CE2127;
+            background-color: #f7f7f7;
+            ;
+            border-radius: 8px;
+            font-size: 14px;
+            padding: 6px 12px;
+            font-weight: 700;
+            letter-spacing: .025rem;
+            cursor: pointer;
+        }
+
+        .menu-element a {
+            text-decoration: none;
+            color: #CE2127;
+        }
+
+        .menu-element a:hover {
+            text-decoration: underline;
+        }
+
+        .secondary {
+            background-color: #FFD653;
+            display: flex;
+            color: #222;
+            transition: transform 0.4s;
+            z-index: 1;
+            position: relative;
+        }
+
+        .scroll-down .secondary {
+            transform: translate3d(0, -100%, 0);
+        }
+
+        .secondary .container {
+            max-width: 1100px;
+            padding: 0;
+            margin: 0 auto;
+        }
+
+        .main-nav ul {
+            list-style: none;
+            display: flex;
+            margin: 0;
+            padding: 0;
+        }
+
+        .main-nav ul li {
+            padding: 10px 10px;
+            font-size: 14px;
+            letter-spacing: -.005rem;
+            text-transform: uppercase;
+            position: relative;
+            transition: all 0.2s ease-in-out;
+            font-weight: bold;
+        }
+
+        .main-nav ul li:hover {
+            box-shadow: inset 0 -3px 0px 0px tomato;
+            background-color: #f7f7f7;
+            color: rgb(20 50 80 / 100%);
+
+        }
+    </style>
+</head>
+
+<body>
+    <header>
+        <div class="primary">
+            <div class="container">
+                <div class="flex">
+                    <div class="flow-left">
+                        <div class="hamburguer-menu"><span></span></div>
+                        <img class="logo"
+                            src="https://www.bandab.com.br/wp-content/uploads/2021/10/logo-bandab.png.webp">
+                        <button>&#127911; 79.3 AO VIVO</button>
+                    </div>
+                    <div class="flow-right">
+                        <div class="menu-element"><a href="#">Newsletter</a></div>
+                        <div class="menu-element"><a href="#">Receba pelo Whats</a></div>
+                        <div class="search">
+                            &#128269;
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="secondary">
+            <div class="container">
+                <nav class="main-nav">
+                    <ul>
+                        <li>Home</li>
+                        <li>Últimas</li>
+                        <li>Policiais</li>
+                        <li>Curitiba</li>
+                        <li>RMC</li>
+                        <li>Paraná</li>
+                        <li>Política</li>
+                        <li>Esporte</li>
+                        <li>Variedades</li>
+                        <li>Horóscopo</li>
+                        <li>Fique Sabendo</li>
+                        <li>Fica a Dica</li>
+                    </ul>
+                </nav>
+            </div>
+    </header>
+    <div class="clever-outer-wrapper">
+        <div class="clever-wrapper">
+            <div class="clever"
+                onclick="document.getElementsByClassName('clever-outer-wrapper')[0].style.display = 'none';document.getElementsByClassName('clever')[0].style.height = '0';">
+            </div>
+        </div>
+        <div class="rotulo-ad"></div>
+    </div>
+    <main>
+        <div class="breadcrumb">
+            <ul>
+                <li>Home</li>
+                <span>&#8250;</span>
+                <li>Notícias</li>
+                <span>&#8250;</span>
+                <li style="font-weight:bold;">Policiais</li>
+            </ul>
+        </div>
+        <div class="post-meta">
+            <h1 class="post-title">Operação do Gaeco: policiais da Rone são investigados por mortes de 12 pessoas em
+                confrontos</h1>
+            <span class="post-description">Segundo o Gaeco, são 22 policiais militares e um policial penal alvos da
+                investigação.</span>
+            <span class="post-author">Por Francielly Azevedo e Paulo Sergio Debski Junior</span>
+            <span class="post-date">13/12/2022 às 11h07</span>
+        </div>
+        <div class="post-content">
+            <div class="ad right 1">
+                <div style="width: 300px;height: 250px;"><span>PUBLICIDADE</span></div>
+            </div>
+            <figure class="featured-image">
+                <img src="https://www.bandab.com.br/wp-content/uploads/2022/12/operacao-gaeco-rone.jpg.webp">
+                <figcaption>Foto: Paulo Sergio Debski Junior – Banda B</figcaption>
+            </figure>
+            <p>O Grupo de Atuação Especial de Combate ao Crime Organizado (Gaeco) do Ministério Público do Paraná
+                investiga 22 policiais militares e um policial penal suspeitos de fraudar informações sobre mortes em
+                confrontos. Ao todo, são apuradas as circunstâncias de 12 óbitos.</p>
+            <p>Na manhã desta terça-feira (13), foram cumpridos 31 mandados de busca e apreensão no Batalhão das Rondas
+                Ostensivas de Natureza (Rone) da Polícia Militar, no Esquadrão de Eventos e na 3ª Companhia do 17º
+                Batalhão de Polícia Militar, ambos em Curitiba. Foram apreendidos celulares, computadores e documentos.
+                Ninguém foi preso.</p>
+            <div class="ad video">
+                <div style="width: 650px;height: 350px;"><span>PUBLICIDADE VIDEO</span></div>
+            </div>
+            <p>O Gaeco investiga as mortes de seis pessoas no bairro Cajuru, duas no Caximba, duas no Campo Comprido,
+                uma em Campo Largo e de um adolescente no Parolin.</p>
+            <p class="cta"><a href="#">+Os melhores conteúdos no seu e-mail gratuitamente. Escolha a sua Newsletter
+                    favorita da
+                    Banda B. Clique aqui!</a></p>
+            <figure class="inline-image">
+                <img src="https://www.bandab.com.br/wp-content/uploads/2022/12/operacao-gaeco-rone.jpg.webp">
+                <figcaption>Foto: Paulo Sergio Debski Junior – Banda B</figcaption>
+            </figure>
+            <p>Em entrevista à Banda B, o coordenador do Gaeco Leonir Batisti afirmou que há indícios de que os relatos
+                repassados pelos policiais não seja o que realmente aconteceu nos fatos.</p>
+            <blockquote>
+                <p>“A identificação ela existe a partir do próprio controle interno da Polícia Militar. Quando um
+                    policial vai executar uma ação, ele faz um boletim de ocorrência, registra e comunica o seu oficial
+                    que aquela situação gerou um confronto e alguém morreu. O que estamos verificando é se aquilo que
+                    foi repassado está coerente com a descrição. Nós temos indícios de que as coisas podem ter
+                    acontecido diferente do narrado pelo próprio policial”, disse.</p>
+            </blockquote>
+            <div class="ad full">
+                <div style="width: 1100px ;height: 250px;"><span>PUBLICIDADE</span></div>
+            </div>
+            <div class="ad right 2">
+                <div style="width: 300px;height: 250px;"><span>PUBLICIDADE</span></div>
+            </div>
+            <p>Conforme Batisti, a maioria dos policiais faz parte da Rone. Dos 28 investigados, 19 foram transferidos
+                para serviços administrativos até que a apuração seja concluída.</p>
+            <blockquote>
+                <p>“A investigação não sai do nada. Nós já temos elementos que dizem que os fatos não aconteceram
+                    daquela forma. Isso não é prova processual. A prova processual é o final do processo. A Justiça
+                    determinou o afastamento de 19 policias que poderão trabalhar em serviços administrativos”,
+                    destacou.</p>
+            </blockquote>
+            <div class="veja-tambem">
+                <div class="veja-tambem-title">Veja também</div>
+                <div class="wrapper">
+                    <div class="veja-tambem-post">
+                        <img
+                            src="https://www.bandab.com.br/wp-content/uploads/2022/12/policias-mortos-acidente-720x290.jpg.webp">
+                        <h2>Policiais militares mortos após viatura bater contra árvore são identificados</h2>
+                    </div>
+                    <div class="veja-tambem-post">
+                        <img src="https://www.bandab.com.br/wp-content/uploads/2022/12/mppr-360x230.jpg.webp">
+                        <h2>Gaeco detalha confrontos que motivaram ação contra policiais militares da Rone em Curitiba
+                        </h2>
+                    </div>
+                    <div class="veja-tambem-post">
+                        <img src="https://www.bandab.com.br/wp-content/uploads/2022/12/influencer-360x230.jpg.webp">
+                        <h2>Influencer de Curitiba é alvo de golpe e bandidos usam conta de 285 mil seguidores para
+                            pedir ‘Pix’</h2>
+                    </div>
+                </div>
+            </div>
+            <h2>Exemplo de Vídeo no Meio da Matéria</H2>
+            <figure class="video">
+                <video controls
+                    src="https://www.bandab.com.br/wp-content/uploads/2022/12/WhatsApp-Video-2022-12-12-at-20.55.05.mp4"></video>
+            </figure>
+            <p>De acordo com o coordenador do Gaeco, é natural que seja aberta uma investigação em casos onde há
+                confrontos.</p>
+            <blockquote>
+                <p>“Em alguns casos nós fomos procurados e em outros nós analisamos a mecânica descrita, que se revelou
+                    digna de uma necessidade de investigação. Por isso, estamos fazendo essa apuração em relação a
+                    quatro situações”, reforçou.</p>
+            </blockquote>
+            <div class="ad small">
+                <div style="width: 300px ;height: 250px;"><span>PUBLICIDADE</span></div>
+            </div>
+            <p>Por meio de nota enviada à Banda B, a Polícia Militar disse que a operação foi acompanhada pela
+                Corregedoria do órgão. A PM ressalta que seu compromisso em prestar todos os esclarecimentos
+                necessários, atuando sempre em prol da transparência para com a população paranaense.</p>
+            <p class="cta"><a href="#">+ Fique bem informado todos os dias com o Jornal da Banda B. Baixe o app Banda B
+                    para Android ou iPhone clicando aqui!</a></p>
+            <p class="cta"><a href="#">+ Quer receber notícias no seu WhatsApp? Clique aqui e entre para o Grupo de
+                    WhatsApp da Banda B!</a></p>
+        </div>
+        <div class="related-content">
+            <div class="related-content-title">Conteúdos relacionados</div>
+            <div class="related-post">
+                <img
+                    src="https://images.outbrainimg.com/transform/v3/eyJpdSI6ImIzNDZiNTQ1YmFmM2ZlZjIyY2ZiZTY0ZjE0ZTZkNDIwYjA3OTRhNTNkYjY4MzFiNTcyNjgyNDg2MDFhYmI0MjgiLCJ3IjozMDAsImgiOjIwMCwiZCI6MS41LCJjcyI6MCwiZiI6NH0.webp">
+                <h2>Se o zumbido no ouvido não para, faça isso (é genial)</h2>
+            </div>
+            <div class="related-post">
+                <img
+                    src="https://images.outbrainimg.com/transform/v3/eyJpdSI6ImVlZDU1ODMzYjQ0ZjhhZDUyYzMxMWYyNDEzZTRkZDQ0MjRiYjcyZWVhODMzNjAzYmNiOGJhN2QyOTlkYThmYjMiLCJ3IjozMDAsImgiOjIwMCwiZCI6MS41LCJjcyI6MCwiZiI6NH0.webp">
+                <h2>[Quiz] Se você obtiver 7/10 neste teste básico de geografia, seu QI é 140</h2>
+            </div>
+            <div class="related-post bb">
+                <img src="https://www.bandab.com.br/wp-content/uploads/2022/08/SERGIO-MORO-960x640.jpg.webp">
+                <h2>TRE-PR aponta falhas na prestação de contas de Moro pela terceira vez</h2>
+            </div>
+            <div class="related-post">
+                <img
+                    src="https://images.outbrainimg.com/transform/v3/eyJpdSI6ImEzM2IwZDg3M2UzOGFhZTkxMTRlMWYwOTI5OGQ2NGJmMmNhMmMxNjU1OWU5OTIzMmU2OTE4ZmY3YWY2NmZkOTAiLCJ3IjozMDAsImgiOjIwMCwiZCI6MS41LCJjcyI6MCwiZiI6NH0.webp">
+                <h2>Elevadores de escadas são a nova tendência para 2022 - Veja mais opções hoje</h2>
+            </div>
+            <div class="related-post bb">
+                <img src="https://www.bandab.com.br/wp-content/uploads/2022/12/viatura-pm.jpeg.webp">
+                <h2>Viatura bate contra árvore e dois policiais militares morrem em estrada do Paraná</h2>
+            </div>
+            <div class="related-post">
+                <img
+                    src="https://images.outbrainimg.com/transform/v3/eyJpdSI6IjZjYmFhNzdhMGQ4ODQ2MmIwMTNkZWViZmNiNGU3NGViZDA5ODI1N2IzMGZmNjljYjBmM2NkMzkwOGIxYTA5MTYiLCJ3IjozMDAsImgiOjIwMCwiZCI6MS41LCJjcyI6MCwiZiI6NH0.webp">
+                <h2>Truques de manutenção de carros que todos deveriam saber</h2>
+            </div>
+            <div class="related-post">
+                <img
+                    src="https://images.outbrainimg.com/transform/v3/eyJpdSI6ImIzNDZiNTQ1YmFmM2ZlZjIyY2ZiZTY0ZjE0ZTZkNDIwYjA3OTRhNTNkYjY4MzFiNTcyNjgyNDg2MDFhYmI0MjgiLCJ3IjozMDAsImgiOjIwMCwiZCI6MS41LCJjcyI6MCwiZiI6NH0.webp">
+                <h2>Se o zumbido no ouvido não para, faça isso (é genial)</h2>
+            </div>
+            <div class="related-post">
+                <img
+                    src="https://images.outbrainimg.com/transform/v3/eyJpdSI6ImVlZDU1ODMzYjQ0ZjhhZDUyYzMxMWYyNDEzZTRkZDQ0MjRiYjcyZWVhODMzNjAzYmNiOGJhN2QyOTlkYThmYjMiLCJ3IjozMDAsImgiOjIwMCwiZCI6MS41LCJjcyI6MCwiZiI6NH0.webp">
+                <h2>[Quiz] Se você obtiver 7/10 neste teste básico de geografia, seu QI é 140</h2>
+            </div>
+            <div class="related-post bb">
+                <img src="https://www.bandab.com.br/wp-content/uploads/2022/08/SERGIO-MORO-960x640.jpg.webp">
+                <h2>TRE-PR aponta falhas na prestação de contas de Moro pela terceira vez</h2>
+            </div>
+            <div class="related-post">
+                <img
+                    src="https://images.outbrainimg.com/transform/v3/eyJpdSI6ImEzM2IwZDg3M2UzOGFhZTkxMTRlMWYwOTI5OGQ2NGJmMmNhMmMxNjU1OWU5OTIzMmU2OTE4ZmY3YWY2NmZkOTAiLCJ3IjozMDAsImgiOjIwMCwiZCI6MS41LCJjcyI6MCwiZiI6NH0.webp">
+                <h2>Elevadores de escadas são a nova tendência para 2022 - Veja mais opções hoje</h2>
+            </div>
+            <div class="related-post bb">
+                <img src="https://www.bandab.com.br/wp-content/uploads/2022/12/viatura-pm.jpeg.webp">
+                <h2>Viatura bate contra árvore e dois policiais militares morrem em estrada do Paraná</h2>
+            </div>
+            <div class="related-post">
+                <img
+                    src="https://images.outbrainimg.com/transform/v3/eyJpdSI6IjZjYmFhNzdhMGQ4ODQ2MmIwMTNkZWViZmNiNGU3NGViZDA5ODI1N2IzMGZmNjljYjBmM2NkMzkwOGIxYTA5MTYiLCJ3IjozMDAsImgiOjIwMCwiZCI6MS41LCJjcyI6MCwiZiI6NH0.webp">
+                <h2>Truques de manutenção de carros que todos deveriam saber</h2>
+            </div>
+        </div>
+    </main>
+
+    <script>
+
+        setTimeout(function () { document.getElementsByClassName('clever')[0].style.height = '212px' }, 2500);
+
+        const nav = document.querySelector("header .secondary");
+        const scrollUp = "scroll-up";
+        const scrollDown = "scroll-down";
+        let lastScroll = 0;
+
+        window.addEventListener("scroll", () => {
+            const currentScroll = window.pageYOffset;
+            if (currentScroll <= 100) {
+                document.body.classList.remove(scrollUp);
+                return;
+            }
+
+            if (currentScroll > lastScroll && !document.body.classList.contains(scrollDown)) {
+                // down
+                document.body.classList.remove(scrollUp);
+                document.body.classList.add(scrollDown);
+            } else if (
+                currentScroll < lastScroll &&
+                document.body.classList.contains(scrollDown)
+            ) {
+                // up
+                document.body.classList.remove(scrollDown);
+                document.body.classList.add(scrollUp);
+            }
+            lastScroll = currentScroll;
+        });				 
+    </script>
+
+</body>
+
+</html>
